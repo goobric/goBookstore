@@ -41,7 +41,9 @@ func CreateBook(w http.ResponseWriter, r *http.Request) {
 	CreateBook := &models.Book{}
 	utils.ParseBody(r, CreateBook)
 	b := CreateBook.CreateBook()
+	// CreateBook function inside book.go file
 	res, _ := json.Marshal(b)
+	// Convert the response to json file format
 	w.WriteHeader(http.StatusOK)
 	w.Write(res)
 }
@@ -54,6 +56,7 @@ func DeleteBook(w http.ResponseWriter, r *http.Request) {
 		fmt.Println("Error parsing book")
 	}
 	book := models.DeleteBook(ID)
+	// refers to the DeleteBook function within the book.go file
 	res, _ := json.Marshal(book)
 	w.Header().Set("Content-Type", "pkglication/json")
 	w.WriteHeader(http.StatusOK)
